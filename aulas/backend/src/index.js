@@ -6,7 +6,12 @@ const mongoose = require('mongoose')
 const app = express()
 
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
+const io = require('socket.io')(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      credentials: true
+    }
+    });
 
 mongoose.connect('mongodb+srv://omni7:1234@cluster0.syi4p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser: true,
